@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\gene.dir/objects.a
+C:\PROGRA~1\mingw64\bin\ar.exe qc CMakeFiles\gene.dir/objects.a @CMakeFiles\gene.dir\objects1.rsp
+C:\PROGRA~1\mingw64\bin\X86_64~2.EXE -g -Wl,--whole-archive CMakeFiles\gene.dir/objects.a -Wl,--no-whole-archive -o gene.exe -Wl,--out-implib,libgene.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\gene.dir\linklibs.rsp
