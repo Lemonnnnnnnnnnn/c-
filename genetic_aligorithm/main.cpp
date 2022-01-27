@@ -31,7 +31,7 @@ void InitGroup()
         uniform_real_distribution<double> u(chromosomeRange[i].getLow(), chromosomeRange[i].getHigh()); // 定义随机范围
         for (int j = 0; j < groupNumber; j++)
         {
-            initArray[i][j] = u(e);
+            initArray[j][i] = u(e); 
         }
     }
 
@@ -85,4 +85,5 @@ void CaculateFitnessP(){
 int main(int, char **)
 {
     InitGroup();
+    cout << "process success" << endl;
 }
