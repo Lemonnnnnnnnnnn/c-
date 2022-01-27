@@ -29,6 +29,9 @@ double* Individual::getChromosome(){
 double Individual::getFitnessProbability(){
     return fitnessProbability;
 }
+double Individual::getFitnessSum(){
+    return fitnessSum;
+}
 
 void Individual::setFitness(double my_fitness){
     fitness = my_fitness;
@@ -37,4 +40,9 @@ void Individual::setFitness(double my_fitness){
 void Individual::setFitnessProbability(double my_fitnessProbability){
     fitnessProbability = my_fitnessProbability;
 }
+
+void Individual::setFitnessProbability(double my_fitnessSum){
+    fitnessSum = my_fitnessSum;
+}
+
 
