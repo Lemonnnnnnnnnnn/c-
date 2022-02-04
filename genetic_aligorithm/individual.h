@@ -1,7 +1,7 @@
 const int chromosomeNumber = 2; // 染色体个数
 // const int group
 
-class Individual{
+class Individual{ 
     private:
     double chromosome[chromosomeNumber]; //染色体数组
     double fitness; // 适应度
