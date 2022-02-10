@@ -7,6 +7,6 @@ aux_source_directory(${PROJECT_SOURCE_DIR} ALL_FILES)
 
 add_executable(tsp ${ALL_FILES})
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_NAME ${PROJECT_NAME}) 
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)

@@ -25,7 +25,7 @@ Graph::Graph(string fileName)
     {
         for (int j = 0; j < citycount; j++)
         {
-            distance[i][j] = sqrt(pow((city[i].x - city[j].x), 2) + pow((city[i].y - city[j].y), 2)); //计算城市ij之间的伪欧式距离
+            distance[i][j] = sqrt(pow((city[i].x - city[j].x), 2) + pow((city[i].y - city[j].y), 2)); //计算城市ij之间的距离
         }
     }
 }
@@ -42,8 +42,7 @@ void Graph::show()
     {
         for (int j = 0; j < citycount; j++)
         {
-            cout << distance[i][j];
-            // distance[i][j] = sqrt(pow((city[i].x - city[j].x), 2) + pow((city[i].y - city[j].y), 2)); //计算城市ij之间的伪欧式距离
+            cout << distance[i][j] << endl;
         }
     }
 }

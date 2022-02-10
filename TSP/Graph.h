@@ -15,7 +15,7 @@ public:
     Graph(string);
     void show();
 
-private:
+protected:
     int CityCount;
     City *city;                            // 城市数组
     double distance[citycount][citycount]; // 城市间距离
