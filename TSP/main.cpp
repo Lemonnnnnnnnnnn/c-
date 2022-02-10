@@ -16,6 +16,7 @@ int main(int, char **)
     SAA sa("D:\\c-\\TSP\\in.txt");
     cout << sa.findX() << endl;
     sa.outPath();
+    sa.show();
 
     finish = clock(); //程序结束停止计时
                       //计算运行时间

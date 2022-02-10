@@ -38,11 +38,17 @@ void Graph::show()
         cout << city[i].name << setw(10) << city[i].x << setw(10) << city[i].y << endl;
     }
     cout << endl;
-    for (int i = 0; i < citycount; i++)
-    {
-        for (int j = 0; j < citycount; j++)
-        {
-            cout << distance[i][j] << endl;
-        }
-    }
+    
+
+    // for (int i = 0; i < citycount; i++)
+    // {
+    //     for (int j = 0; j < citycount; j++)
+    //     {
+    //         if (j == citycount - 1)
+	// 				cout << distance[i][j] << endl;
+	// 			else
+	// 				cout << distance[i][j] << "  ";
+    //         // cout << distance[i][j] << endl;
+    //     }
+    // }
 }
