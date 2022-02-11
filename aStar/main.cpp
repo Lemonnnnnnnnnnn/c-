@@ -5,10 +5,11 @@
 int main(int, char **)
 {
 
-    Node start(10, 40);
-    Node end(40, 10);
+    Node start(10, 4);
+    Node end(10, 6);
 
     AStar a(&start, &end);
     // a.show();
-    cout << a.searchTarget();
+    // cout << a.search() << endl;
+    a.search();
 }

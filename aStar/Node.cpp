@@ -2,47 +2,68 @@
 
 void Node::show()
 {
-    cout << "(x , y) : "
-         << "(" << x << " , " << y << ")" << endl;
-    cout << "F:" << F << endl;
-    cout << "G:" << G << endl;
-    cout << "H:" << H << endl;
+    cout << "(" << x << " , " << y << ")";
+    // cout << "(x , y) : "
+    //      << "(" << x << " , " << y << ")" << endl;
+    // cout << "F:" << F << endl;
+    // cout << "G:" << G << endl;
+    // cout << "H:" << H << endl;
 }
 
 void Node::showParent()
 {
-    cout << "(x , y) : "
-         << "(" << parent->x << " , " << parent->y << ")" << endl;
-    cout << "F:" << parent->F << endl;
-    cout << "G:" << parent->G << endl;
-    cout << "H:" << parent->H << endl;
+    cout << "(" << parent->x << " , " << parent->y << ")";
+    // cout << "(x , y) : "
+        //  << "(" << parent->x << " , " << parent->y << ")" << endl;
+    // cout << "F:" << parent->F << endl;
+    // cout << "G:" << parent->G << endl;
+    // cout << "H:" << parent->H << endl;
 }
 
-void Node::setF(int f){
+void Node::setParent(Node *_parent)
+{
+    parent = _parent;
+}
+
+void Node::setF(int f)
+{
     F = f;
 }
-void Node::setG(int g){
+void Node::setG(int g)
+{
     G = g;
 }
-void Node::setH(int h){
-    F = h;
+void Node::setH(int h)
+{
+    H = h;
 }
 
-int Node::getx(){
+void Node::setVisited(bool visited)
+{
+    isVisited = visited;
+}
+
+int Node::getx()
+{
     return x;
 }
-int Node::gety(){
+int Node::gety()
+{
     return y;
 }
-int Node::getF(){
+int Node::getF()
+{
     return F;
 }
-int Node::getG(){
+int Node::getG()
+{
     return G;
 }
-int Node::getH(){
+int Node::getH()
+{
     return H;
 }
-bool Node::getVisited(){
+bool Node::getVisited()
+{
     return isVisited;
 }
