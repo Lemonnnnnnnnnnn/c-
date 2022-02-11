@@ -9,5 +9,6 @@ int main(int, char **)
     Node end(40, 10);
 
     AStar a(&start, &end);
-    a.show();
+    // a.show();
+    cout << a.searchTarget();
 }

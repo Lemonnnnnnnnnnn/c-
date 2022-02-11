@@ -39,9 +39,16 @@ class AStar{
     vector<Node*> closeList;  
     Node *start;
     Node *end;
+
     public:
     AStar(Node*,Node*);
-    void search();
-    void show();
+    void search(); // 主函数
+//     void show(); 
+    bool searchTarget(); // 判断目标格是否在“开启列表中”
+    void trace(); // 从目标格回溯，并打印路径
+    void findNext(); // 寻找开启列表中F值最低的格子
+    void setArround(); // 设置周围8格的 F,G,H
+
+//     void setDis(Node* , Node*); // 
 };
 

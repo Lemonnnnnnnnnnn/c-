@@ -17,3 +17,32 @@ void Node::showParent()
     cout << "G:" << parent->G << endl;
     cout << "H:" << parent->H << endl;
 }
+
+void Node::setF(int f){
+    F = f;
+}
+void Node::setG(int g){
+    G = g;
+}
+void Node::setH(int h){
+    F = h;
+}
+
+int Node::getx(){
+    return x;
+}
+int Node::gety(){
+    return y;
+}
+int Node::getF(){
+    return F;
+}
+int Node::getG(){
+    return G;
+}
+int Node::getH(){
+    return H;
+}
+bool Node::getVisited(){
+    return isVisited;
+}
