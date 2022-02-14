@@ -1,3 +1,4 @@
+day weather temperature humidity play
 1 Sunny Hot High Weak no  
 2 Sunny Hot High Strong no  
 3 Overcast Hot High Weak yes  

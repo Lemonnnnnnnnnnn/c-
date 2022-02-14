@@ -4,6 +4,7 @@
 #include "trainList.h"
 #include <vector>
 
+// 参考 ： https://github.com/jiafanxue/Coding/tree/master/MachineLearning/decision_tree/ID3
 using namespace std;
 
 int main(int, char **)
