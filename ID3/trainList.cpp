@@ -12,18 +12,42 @@ trainList::trainList(string fileName)
     }
     else
     {
-        int day;
+        string day;
         string outLook;
         string Temperature;
         string Humidity;
         string Wind;
         string playTennis;
 
+        bool firstLine = true;
+        vector<vector<string>> typeDataArray;
+        
         while (!myfile.eof())
         {
             myfile >> day >> outLook >> Temperature >> Humidity >> Wind >> playTennis;
-            dataItem *newItem = new dataItem(day, outLook, Temperature, Humidity, Wind, playTennis);
-            list.push_back(newItem);
+            if (firstLine)
+            {
+                attributes.push_back(day);
+                attributes.push_back(outLook);
+                attributes.push_back(Temperature);
+                attributes.push_back(Humidity);
+                attributes.push_back(Wind);
+                attributes.push_back(playTennis);
+            }
+            else
+            {
+                typeDataArray[0].push_back(day);
+                typeDataArray[1].push_back(outLook);
+                typeDataArray[2].push_back(Temperature);
+                typeDataArray[3].push_back(Humidity);
+                typeDataArray[4].push_back(Wind);
+                typeDataArray[5].push_back(playTennis);
+                dataItem *newItem = new dataItem(day, outLook, Temperature, Humidity, Wind, playTennis);
+                list.push_back(newItem);
+            }
+        }
+        for(int i = 0 ; i < attributes.size() ; i ++){
+            map_attribute[attributes[i]] = typeDataArray[i];
         }
     }
 }

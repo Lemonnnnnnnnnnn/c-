@@ -6,7 +6,7 @@ using namespace std;
 class dataItem
 {
 private:
-    int Day;
+    string Day;
     string OutLook;
     string Temperature;
     string Humidity;
@@ -14,7 +14,7 @@ private:
     string PlayTennis;
     /* data */
 public:
-    dataItem(int _Day,string _OutLook,string _Temperature,string _Humidity,string _Wind , string _PlayTennis){
+    dataItem(string _Day,string _OutLook,string _Temperature,string _Humidity,string _Wind , string _PlayTennis){
         Day = _Day;
         OutLook = _OutLook;
         Temperature = _Temperature;
@@ -22,6 +22,7 @@ public:
         Wind = _Wind;
         PlayTennis = _PlayTennis;
     };
+    string getDay(){return Day;};
     string getOutLook(){return OutLook;};
     string getTemperature(){return Temperature;};
     string getHumidity(){return Humidity;};
