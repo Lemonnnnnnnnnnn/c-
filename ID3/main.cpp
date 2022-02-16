@@ -1,8 +1,5 @@
-#include <iostream>
-#include <fstream>
 #include "tree.h"
 #include "trainList.h"
-#include <vector>
 
 // 参考 ： https://github.com/jiafanxue/Coding/tree/master/MachineLearning/decision_tree/ID3
 using namespace std;
@@ -12,7 +9,7 @@ node *generateTree(node *root)
 {
     if (root->checkDecision()){ // 如果决策结果唯一
         return root;
-    }else{// 如果决策结果不唯一
+    }else{  
 
     }
 }
@@ -20,11 +17,8 @@ node *generateTree(node *root)
 int main(int, char **)
 {
     trainList trainlist("D:\\c-\\ID3\\in.txt");
-    node *rootTree = new node(trainlist.data);
-    generateTree(rootTree);
+    node *rootTree = new node(&trainlist);
+    node *finalTree = generateTree(rootTree);
 
-    // tree tr;
-    // while(!tr.checkLeftNode()){
 
-    // }
 }

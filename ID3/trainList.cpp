@@ -1,7 +1,5 @@
 #include "trainList.h"
-#include <iostream>
-#include <cmath>
-#include <fstream>
+
 
 trainList::trainList(string fileName)
 {
@@ -20,7 +18,7 @@ trainList::trainList(string fileName)
         string playTennis;
 
         bool firstLine = true;
-        vector<vector<string>> typeDataArray;
+        allClass ac; 
         
         while (!myfile.eof())
         {
@@ -36,51 +34,18 @@ trainList::trainList(string fileName)
             }
             else
             {
-                typeDataArray[0].push_back(day);
-                typeDataArray[1].push_back(outLook);
-                typeDataArray[2].push_back(Temperature);
-                typeDataArray[3].push_back(Humidity);
-                typeDataArray[4].push_back(Wind);
-                typeDataArray[5].push_back(playTennis);
-                dataItem newItem = new dataItem(day, outLook, Temperature, Humidity, Wind, playTennis);
-                data.push_back(newItem);
+                ac[0].push_back({day , playTennis});
+                ac[1].push_back({outLook , playTennis});
+                ac[2].push_back({Temperature , playTennis});
+                ac[3].push_back({Humidity , playTennis});
+                ac[4].push_back({Wind , playTennis});
+                dataItem *newItem = new dataItem(day, outLook, Temperature, Humidity, Wind, playTennis);
+                data.push_back(*newItem);
             }
         }
-        for(int i = 0 ; i < attributes.size() ; i ++){
-            map_attribute[attributes[i]] = typeDataArray[i];
+        for(int i = 0 ; i < attributes.size() - 1 ; i ++){
+            map_attribute[attributes[i]] = ac[i];
         }
     }
 }
 
-// void trainList::updateList(vector<dataItem *> newList)
-// {
-//     list = newList;
-// }
-
-// void trainList::setE()
-// {
-//     double sum = 0.00;
-//     int play = 0;
-//     int notplay = 0;
-//     int total = list.size();
-//     for (int i = 0; i < list.size(); i++)
-//     {
-//         if (list.at(i)->getPlayTennis() == "yes")
-//         {
-//             play += 1;
-//         }
-//         else
-//         {
-//             notplay += 1;
-//         }
-//     }
-//     E = computeE(play, notplay, total);
-// }
-
-// double trainList::computeE(int play, int notplay, int total)
-// {
-//     double sum = 0.00;
-//     sum += play / total * log2(play / total);
-//     sum += notplay / total * log2(notplay / total);
-//     return -(sum);
-// }
