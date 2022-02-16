@@ -18,7 +18,7 @@ bool tree::checkLeftNode()
             continue;
         }
         string decision = currentDataItem.at(0).getPlayTennis();
-        for (int j = 0; j < currentDataItem.size(); i++)
+        for (int j = 1; j < currentDataItem.size(); j++)
         {
             if (currentDataItem.at(j).getPlayTennis() != decision)
             {

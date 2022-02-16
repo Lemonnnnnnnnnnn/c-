@@ -42,8 +42,8 @@ trainList::trainList(string fileName)
                 typeDataArray[3].push_back(Humidity);
                 typeDataArray[4].push_back(Wind);
                 typeDataArray[5].push_back(playTennis);
-                dataItem *newItem = new dataItem(day, outLook, Temperature, Humidity, Wind, playTennis);
-                list.push_back(newItem);
+                dataItem newItem = new dataItem(day, outLook, Temperature, Humidity, Wind, playTennis);
+                data.push_back(newItem);
             }
         }
         for(int i = 0 ; i < attributes.size() ; i ++){
@@ -52,35 +52,35 @@ trainList::trainList(string fileName)
     }
 }
 
-void trainList::updateList(vector<dataItem *> newList)
-{
-    list = newList;
-}
+// void trainList::updateList(vector<dataItem *> newList)
+// {
+//     list = newList;
+// }
 
-void trainList::setE()
-{
-    double sum = 0.00;
-    int play = 0;
-    int notplay = 0;
-    int total = list.size();
-    for (int i = 0; i < list.size(); i++)
-    {
-        if (list.at(i)->getPlayTennis() == "yes")
-        {
-            play += 1;
-        }
-        else
-        {
-            notplay += 1;
-        }
-    }
-    E = computeE(play, notplay, total);
-}
+// void trainList::setE()
+// {
+//     double sum = 0.00;
+//     int play = 0;
+//     int notplay = 0;
+//     int total = list.size();
+//     for (int i = 0; i < list.size(); i++)
+//     {
+//         if (list.at(i)->getPlayTennis() == "yes")
+//         {
+//             play += 1;
+//         }
+//         else
+//         {
+//             notplay += 1;
+//         }
+//     }
+//     E = computeE(play, notplay, total);
+// }
 
-double trainList::computeE(int play, int notplay, int total)
-{
-    double sum = 0.00;
-    sum += play / total * log2(play / total);
-    sum += notplay / total * log2(notplay / total);
-    return -(sum);
-}
+// double trainList::computeE(int play, int notplay, int total)
+// {
+//     double sum = 0.00;
+//     sum += play / total * log2(play / total);
+//     sum += notplay / total * log2(notplay / total);
+//     return -(sum);
+// }
