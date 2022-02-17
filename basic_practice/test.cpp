@@ -11,6 +11,7 @@ class A{
 int main(int argc, char const *argv[])
 {
     class A a;
-    cout << a["attri"] << end;
+    string attr = "attr1";
+    cout << a.attr1 << endl;
     return 0;
 }

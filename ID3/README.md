@@ -27,4 +27,6 @@
         Tree.push(最小信息增益分类)；
     }
 
+### 数据来源
+https://blog.csdn.net/yangliuy/article/details/7322015
 
