@@ -1,15 +1,15 @@
-day outLook temperature humidity wind play
-1 Sunny Hot High Weak no  
-2 Sunny Hot High Strong no  
-3 Overcast Hot High Weak yes  
-4 Rainy Mild High Weak yes  
-5 Rainy Cool Normal Weak yes  
-6 Rainy Cool Normal Strong no  
-7 Overcast Cool Normal Strong yes  
-8 Sunny Mild High Weak no  
-9 Sunny Cool Normal Weak yes  
-10 Rainy Mild Normal Weak yes  
-11 Sunny Mild Normal Strong yes  
-12 Overcast Mild High Strong yes  
-13 Overcast Hot Normal Weak yes  
-14 Rainy Mild High Strong no  
+outLook temperature humidity wind play
+Sunny Hot High Weak no  
+Sunny Hot High Strong no  
+Overcast Hot High Weak yes  
+Rainy Mild High Weak yes  
+Rainy Cool Normal Weak yes  
+Rainy Cool Normal Strong no  
+Overcast Cool Normal Strong yes  
+Sunny Mild High Weak no  
+Sunny Cool Normal Weak yes  
+Rainy Mild Normal Weak yes  
+Sunny Mild Normal Strong yes  
+Overcast Mild High Strong yes  
+Overcast Hot Normal Weak yes  
+Rainy Mild High Strong no  

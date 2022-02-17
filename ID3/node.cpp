@@ -1,13 +1,14 @@
 #include "node.h"
 
-
 // 根据play和 notplay计算entropy
 double compute_entropy(pair_di deci)
 {
     double sum = 0.00;
     int total = deci.first + deci.second;
-    sum += deci.first / total * log2(deci.first / total);
-    sum += deci.second / total * log2(deci.second / total);
+    double ratePlay = 1.0 * deci.first / total;
+    double rateNotPlay = 1.0 * deci.second / total;
+    sum += ratePlay * (log2(ratePlay) || 0);
+    sum += rateNotPlay * (log2(rateNotPlay) || 0);
     return -(sum);
 }
 
@@ -18,7 +19,7 @@ pair_di get_decision(DATA_LIST items)
     int notplay = 0;
     for (int i = 0; i < items.size(); i++)
     {
-        if (items.at(i).PlayTennis == "play")
+        if (items.at(i).PlayTennis == "yes")
         {
             play += 1;
         }
@@ -29,7 +30,6 @@ pair_di get_decision(DATA_LIST items)
     }
     return make_pair(play, notplay);
 }
-
 
 node::node(trainList *_datas)
 {
@@ -55,7 +55,6 @@ bool node::checkDecision()
     return true;
 }
 
-
 // 寻找最大的信息增益
 void node::find_max_info()
 {
@@ -76,7 +75,6 @@ void node::find_max_info()
     }
     attribute = max_attribute;
 }
-
 
 LIST_MAP node::classify(string attribute)
 {
@@ -120,4 +118,3 @@ double node::compute_info(string attribute, double entropy)
     }
     return entropy - condition_entropy_sum;
 }
-

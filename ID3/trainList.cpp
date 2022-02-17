@@ -10,7 +10,6 @@ trainList::trainList(string fileName)
     }
     else
     {
-        string day;
         string outLook;
         string Temperature;
         string Humidity;
@@ -21,19 +20,19 @@ trainList::trainList(string fileName)
         
         while (!myfile.eof())
         {
-            myfile >> day >> outLook >> Temperature >> Humidity >> Wind >> playTennis;
+            myfile  >> outLook >> Temperature >> Humidity >> Wind >> playTennis;
             if (firstLine)
             {
-                attributes.push_back(day);
                 attributes.push_back(outLook);
                 attributes.push_back(Temperature);
                 attributes.push_back(Humidity);
                 attributes.push_back(Wind);
                 attributes.push_back(playTennis);
+                firstLine = false;
             }
             else
             {
-                dataItem *newItem = new dataItem(day, outLook, Temperature, Humidity, Wind, playTennis);
+                dataItem *newItem = new dataItem( outLook, Temperature, Humidity, Wind, playTennis);
                 list.push_back(*newItem);
             }
         }

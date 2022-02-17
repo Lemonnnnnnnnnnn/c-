@@ -1,4 +1,6 @@
 #include "dataItem.h"
+#include "require.h"
+#pragma once
 
 class trainList
 {

@@ -37,7 +37,7 @@ node *generateTree(node *root)
             trainList newTrainList(sonList, new_attribute);
             node *newNode = new node(&newTrainList);
             root->childs.push_back(newNode);
-            return generateTree(newNode);
+            generateTree(newNode);
             it++;
         }
     }
@@ -45,19 +45,17 @@ node *generateTree(node *root)
 
 void print(node *p)
 {
-    while (p)
+
+    if (p->decision != "not_over")
     {
-        if (p->decision != "not_over")
+        cout << p->decision << endl;
+    }
+    else
+    {
+        cout << p->attribute << endl;
+        for (node *child : p->childs)
         {
-            cout << p->decision << endl;
-        }
-        else
-        {
-            cout << p->attribute << endl;
-            for (node *child : p->childs)
-            {
-                print(child);
-            }
+            print(child);
         }
     }
 }
@@ -66,7 +64,7 @@ int main(int, char **)
 {
     trainList trainlist("D:\\c-\\ID3\\in.txt");
     node *rootTree = new node(&trainlist);
-    node *finalTree = generateTree(rootTree);
+    generateTree(rootTree);
 
-    print(finalTree);
+    print(rootTree);
 }
