@@ -18,7 +18,6 @@ trainList::trainList(string fileName)
         string playTennis;
 
         bool firstLine = true;
-        allClass ac; 
         
         while (!myfile.eof())
         {
@@ -34,18 +33,14 @@ trainList::trainList(string fileName)
             }
             else
             {
-                ac[0].push_back({day , playTennis});
-                ac[1].push_back({outLook , playTennis});
-                ac[2].push_back({Temperature , playTennis});
-                ac[3].push_back({Humidity , playTennis});
-                ac[4].push_back({Wind , playTennis});
                 dataItem *newItem = new dataItem(day, outLook, Temperature, Humidity, Wind, playTennis);
-                data.push_back(*newItem);
+                list.push_back(*newItem);
             }
-        }
-        for(int i = 0 ; i < attributes.size() - 1 ; i ++){
-            map_attribute[attributes[i]] = ac[i];
         }
     }
 }
 
+trainList::trainList(DATA_LIST dataList, vector<string> attribute){
+    list = dataList;
+    attributes = attribute;
+}

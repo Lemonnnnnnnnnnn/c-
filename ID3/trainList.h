@@ -3,8 +3,8 @@
 class trainList
 {
 public:
-    vector<dataItem> data;
+    DATA_LIST list;
     vector<string> attributes;
-    mapClass map_attribute;
     trainList(string);
+    trainList(DATA_LIST , vector<string>);
 };

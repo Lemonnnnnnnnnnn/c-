@@ -8,9 +8,7 @@
 
 using namespace std;
 
-using classDataRow = pair<string, string>; // 保存属性名和决策
-using classData = vector<classDataRow>;    // 一种属性所有行数据  
-using allClass = vector<classData>;        // 所有属性的所有行数据
-using mapClass = map<string , classData>;  
-using pair_di = pair<int , int>;
-// using pair_sc = pair<string , classData>;
+using pair_di = pair<int, int>;
+
+using LIST_MAP = map<string, vector<dataItem>>;
+using DATA_LIST = vector<dataItem>;
