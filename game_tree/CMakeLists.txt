@@ -3,8 +3,8 @@ project(gameTree VERSION 0.1.0)
 
 include(CTest)
 enable_testing()
-
-add_executable(gameTree main.cpp)
+aux_source_directory(${PROJECT_SOURCE_DIR} ALL_FILES)
+add_executable(gameTree ${ALL_FILES})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
