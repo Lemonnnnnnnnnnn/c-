@@ -46,32 +46,63 @@ vector<cell> get_occupied_cell(char scope[3][3], char player)
     return occupied_cell;
 }
 
-bool check_over(char scope[3][3], char player)
+vector<cell> get_available_cell(char scope[3][3])
 {
-    // 检查有没有人赢了
-    vector<cell> occupied_cell = get_occupied_cell(scope, player);
-
-    for (vector<cell> over_status : over_status_array)
+    vector<cell> available;
+    for (int i = 0; i < 3; i++)
     {
-        bool flag = true;
-        for (int i = 0; i < over_status.size(); i++)
+        for (int j = 0; j < 3; j++)
         {
-            if (over_status[i] != occupied_cell[i])
+            if (scope[i][j] == '-')
             {
-                flag = false;
+                available.push_back(make_pair(i, j));
             }
         }
-        if (flag == true)
+    }
+    return available;
+}
+
+bool check_over(char scope[3][3])
+{
+    char players[2] = {PLAYER, AI_PLAYER};
+
+    for (char player : players)
+    {
+        // 检查有没有人赢了
+        vector<cell> occupied_cell = get_occupied_cell(scope, player);
+        if (occupied_cell.size() < 3)
+        {
+            return false;
+        }
+
+        for (vector<cell> over_status : over_status_array)
+        {
+            bool find_target[3] = {false, false, false};
+            for (int i = 0; i < over_status.size(); i++)
+            { // 一个一个格子进行检查
+
+                for (cell c : occupied_cell)
+                { // 查看当前已占用的格子中是否有目标格
+                    if (c.first == over_status[i].first && c.second == over_status[i].second)
+                    {
+                        find_target[i] = true;
+                        break;
+                    }
+                }
+            }
+
+            if (find_target[0] == true && find_target[1] == true && find_target[2] == true)
+            {
+                return true;
+            }
+        }
+
+        // 检查是否所有位置都满了
+        if (cell_is_full(scope))
         {
             return true;
         }
     }
-    // 检查是否所有位置都满了
-    if (cell_is_full(scope))
-    {
-        return true;
-    }
-
     return false;
 }
 
@@ -128,22 +159,6 @@ int get_score(char scope[3][3])
     return DRAW;
 }
 
-vector<cell> get_available_cell(char scope[3][3])
-{
-    vector<cell> occupied_cell;
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            if (scope[i][j] != '-')
-            {
-                occupied_cell.push_back(make_pair(i, j));
-            }
-        }
-    }
-    return occupied_cell;
-}
-
 board::board()
 {
     memset(scope, EMPTY_SPACE, 9);
@@ -151,7 +166,7 @@ board::board()
 
 pair<int, pair<int, int>> board::AI_Play(AI_Node current, char player, AI_Node father, int depth)
 {
-    if (check_over(current.dynamic_scope, player))
+    if (check_over(current.dynamic_scope))
     {
         return make_pair(get_score(current.dynamic_scope), make_pair(-1, -1));
     }
@@ -214,6 +229,17 @@ pair<int, pair<int, int>> board::AI_Play(AI_Node current, char player, AI_Node f
     }
 }
 
+void board::print()
+{
+    cout << endl;
+    cout << scope[0][0] << " | " << scope[0][1] << " | " << scope[0][2] << endl;
+    cout << "----------" << endl;
+    cout << scope[1][0] << " | " << scope[1][1] << " | " << scope[1][2] << endl;
+    cout << "----------" << endl;
+    cout << scope[2][0] << " | " << scope[2][1] << " | " << scope[2][2] << endl
+         << endl;
+}
+
 void board::begin()
 {
     cout << "begin" << endl;
@@ -221,8 +247,9 @@ void board::begin()
          << endl;
     cout << "first:X" << endl;
     char current_player = PLAYER;
-    while (!check_over(scope, current_player))
+    while (!check_over(scope))
     {
+        print();
         if (current_player == PLAYER)
         {
             int row, col;
@@ -244,11 +271,16 @@ void board::begin()
         else
         {
             AI_Node ap(scope);
-            AI_Play(ap, AI_PLAYER, ap, 1);
+            pair<int, pair<int, int>> next = AI_Play(ap, AI_PLAYER, ap, 1);
+            int next_row = next.second.first;
+            int next_col = next.second.second;
+            scope[next_row][next_col] = AI_PLAYER;
 
             current_player = PLAYER;
         }
     }
+
+    print();
 }
 
 AI_Node::AI_Node(char scope[3][3])

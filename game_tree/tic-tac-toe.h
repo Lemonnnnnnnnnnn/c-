@@ -38,6 +38,7 @@ public:
     int get_board_status();
     pair<int, pair<int, int>> AI_Play(AI_Node, char, AI_Node , int);
     void begin();
+    void print();
     //  bool check_over(char[3][3] ,char);
 };
 
