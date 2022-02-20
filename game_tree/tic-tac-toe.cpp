@@ -166,13 +166,13 @@ board::board()
 
 pair<int, pair<int, int>> board::AI_Play(AI_Node current, char player, AI_Node father, int depth)
 {
-    if (check_over(current.dynamic_scope))
+    if (check_over(current.dynamic_scope)) // 如果结束，得出分数并退栈回上一格
     {
         return make_pair(get_score(current.dynamic_scope), make_pair(-1, -1));
     }
+    
     if (player == PLAYER) // min层
     {
-
         vector<cell> available_cell = get_available_cell(current.dynamic_scope);
 
         for (cell c : available_cell)
@@ -184,11 +184,11 @@ pair<int, pair<int, int>> board::AI_Play(AI_Node current, char player, AI_Node f
             new_scope[next_row][next_col] = PLAYER;
             AI_Node next_status(new_scope);
             int score = AI_Play(next_status, AI_PLAYER, current, depth + 1).first;
-            int preScore = score + depth * 10;
+            int eval_score = score + depth * 10;
 
-            if (preScore > current.beta)
+            if (eval_score > current.beta)
             {
-                current.beta = preScore;
+                current.beta = eval_score;
                 current.next = make_pair(next_row, next_col);
             }
             // 剪枝
@@ -203,7 +203,8 @@ pair<int, pair<int, int>> board::AI_Play(AI_Node current, char player, AI_Node f
     {
         vector<cell> available_cell = get_available_cell(current.dynamic_scope);
 
-        for (cell c : available_cell)
+        
+        for (cell c : available_cell) // 遍历可走的格子，找到分数最高的走法
         {
             char new_scope[3][3];
             memcpy(new_scope, current.dynamic_scope, sizeof(current.dynamic_scope));
@@ -211,12 +212,12 @@ pair<int, pair<int, int>> board::AI_Play(AI_Node current, char player, AI_Node f
             int next_col = c.second;
             new_scope[next_row][next_col] = AI_PLAYER;
             AI_Node next_status(new_scope);
-            int score = AI_Play(next_status, PLAYER, current, depth + 1).first;
-            int preScore = score - depth * 10;
+            int score = AI_Play(next_status, PLAYER, current, depth + 1).first; // 若我走这一步，下一步对方走完能得到的分数 
+            int eval_score = score - depth * 10; 
 
-            if (preScore > current.alpha)
+            if (eval_score > current.alpha)
             {
-                current.alpha = preScore;
+                current.alpha = eval_score;
                 current.next = make_pair(next_row, next_col);
             }
             // 剪枝
