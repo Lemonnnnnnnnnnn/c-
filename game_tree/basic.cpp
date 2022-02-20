@@ -46,6 +46,9 @@ int basicAlgorithm::process(Node *tr, Node *father, int high)
             {
                 tr->alpha = val;
             }
+            if(tr->alpha > father->beta){
+                break;
+            }
         }
         return tr->alpha;
     }
